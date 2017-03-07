@@ -457,7 +457,7 @@ PlayerSettings:
     Collab: 0
     ErrorHub: 0
     Hub: 0
-    UNet: 0
+    UNet: 1
   cloudProjectId: 08e177b1-950f-40ed-b217-729a578c3e44
   projectName: new
   organizationId: zhang48240
