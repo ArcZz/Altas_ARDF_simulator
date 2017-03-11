@@ -468,8 +468,9 @@ PlayerSettings:
   XboxOneAllowedProductIds: []
   XboxOnePersistentLocalStorageSize: 0
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
-  cloudProjectId: 
-  projectName: 
-  organizationId: 
+  cloudServicesEnabled:
+    UNet: 1
+  cloudProjectId: 3ec02fe5-8380-4625-b808-9070dba7c4d3
+  projectName: ARDF Simulator V1.0
+  organizationId: coolcatchagallcn
   cloudEnabled: 0
