@@ -19,7 +19,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private Quaternion m_CharacterTargetRot;
         private Quaternion m_CameraTargetRot;
-        private bool m_cursorIsLocked = true;
+        private bool m_cursorIsLocked = false;//by gcy
 
         public void Init(Transform character, Transform camera)
         {
@@ -80,7 +80,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             else if(Input.GetMouseButtonUp(0))
             {
-                m_cursorIsLocked = true;
+                //m_cursorIsLocked = true;//by gcy
             }
 
             if (m_cursorIsLocked)

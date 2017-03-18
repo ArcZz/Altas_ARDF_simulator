@@ -1,0 +1,362 @@
+Initialize engine version: 5.5.2f1 (3829d7f588f3)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce 610M (ID=0x1058)
+    Vendor:   NVIDIA
+    VRAM:     979 MB
+    Driver:   10.18.10.4425
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simulator V1.0\beta1_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simulator V1.0\beta1_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simulator V1.0\beta1_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simulator V1.0\beta1_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simulator V1.0\beta1_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simulator V1.0\beta1_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simulator V1.0\beta1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simulator V1.0\beta1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simulator V1.0\beta1_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simulator V1.0\beta1_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simulator V1.0\beta1_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simulator V1.0\beta1_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+- Completed reload, in  0.033 seconds
+Platform assembly: C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simulator V1.0\beta1_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simulator V1.0\beta1_Data\Managed\System.dll (this message is harmless)
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1366x768 59Hz; virtual: 1366x768 at 0,0
+<RI> Initialized touch support.
+UnloadTime: 1.554025 ms
+Connection established
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 1444 -> priority: 1 
+  Thread -> id: 5cf0 -> priority: 1 
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Sending
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+FormatException: Input string was not in the correct format
+  at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 
+  at System.Int32.Parse (System.String s, NumberStyles style) [0x00000] in <filename unknown>:0 
+  at PJ80.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
