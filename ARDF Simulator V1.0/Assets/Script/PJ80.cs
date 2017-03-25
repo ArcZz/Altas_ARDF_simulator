@@ -7,13 +7,22 @@ public class PJ80 : MonoBehaviour {
 
     // Use this for initialization
     //private string mes;
-    public Boolean antenna;
+    private Boolean antenna;
+    private int volKnob;
+    private int freqKnob;
+    private Animator anmi;
+    public float whipAntennaLength=1;
 
-	void Start () {
+    void Start () {
         //string test = ReadWrite.get();
 
         //Debug.Log("OK2");
         antenna = false;
+        freqKnob = 0xd0;
+        volKnob = 0xff;
+        //anmi = GetComponent<Animator>();
+        anmi = GameObject.Find("antenna").GetComponent<Animator>();
+        anmi.speed = 4;
     }
 	
 	// Update is called once per frame
@@ -118,18 +127,31 @@ public class PJ80 : MonoBehaviour {
         //this.transform.Rotate(120,0,0,Space.World);
 
         int s1 = Int32.Parse(ReadWrite.mes.Substring(1, 1), System.Globalization.NumberStyles.HexNumber);
+        //bool tempAntenna = antenna;
         if(s1==1)
         {
             GameObject.Find("S1").GetComponent<MeshFilter>().transform.localPosition = new Vector3((float)0.0238, (float)0.0366, 0);
+            if(antenna!=true)
+            {
+                anmi.Play("up", -1, 0f);
+            }
             antenna = true;
+            
         }
         else
         {
             GameObject.Find("S1").GetComponent<MeshFilter>().transform.localPosition = new Vector3((float)0.0272, (float)0.0366, 0);
+            if (antenna != false)
+            {
+                anmi.Play("down", -1, 0f);
+            }
             antenna = false;
         }
 
-
+        freqKnob = Int32.Parse(ReadWrite.mes.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
+        volKnob = Int32.Parse(ReadWrite.mes.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+        GameObject.Find("frequencyKnob").transform.localRotation = Quaternion.Euler(-315*freqKnob/0xff-140, 0, 90);
+        GameObject.Find("volumeKnob").transform.localRotation = Quaternion.Euler(-315 * volKnob / 0xff-40, 0, 90);
 
     }
 
@@ -137,6 +159,7 @@ public class PJ80 : MonoBehaviour {
     {
         //GUI.Label(new Rect(40, 10, 480, 30), "message: " + mes);
         GUI.Label(new Rect(40, 10, 480, 30), "message: " + ReadWrite.mes);
+        //GUI.Label(new Rect(40, 20, 480, 30), "freqKnob: " + freqKnob);
         //ReadWrite.mes.Substring(8, 4);
         //GUI.Label(new Rect(40, 20, 480, 30), "ROLL: " + ReadWrite.mes.Substring(8, 4));
         /*
@@ -199,5 +222,20 @@ public class PJ80 : MonoBehaviour {
         //GUILayout.HorizontalSlider(50, 0, 100);
         //float p1x=GameObject.Find("S1").GetComponent<MeshFilter>().transform.position.x;
         //GUI.Label(new Rect(40, 20, 480, 30), "p1x: " + p1x);
+    }
+
+    public Boolean getAntenna()
+    {
+        return antenna;
+    }
+
+    int getFreqKnob()
+    {
+        return freqKnob;
+    }
+
+    int getVolKnob()
+    {
+        return volKnob;
     }
 }

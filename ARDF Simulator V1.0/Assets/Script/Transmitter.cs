@@ -35,6 +35,7 @@ public class Transmitter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //signal.volume = 1;
+        //GameObject.Find("PJ80").GetComponent<PJ80>().getAntenna();
         Vector3 p1 = GameObject.Find("P1").GetComponent<MeshFilter>().transform.position;
         Vector3 p2 = GameObject.Find("P2").GetComponent<MeshFilter>().transform.position;
         //Vector3 ferriteRodAntenna= GameObject.Find("P1").GetComponent<MeshFilter>().transform.position- GameObject.Find("P2").GetComponent<MeshFilter>().transform.position;
@@ -42,14 +43,23 @@ public class Transmitter : MonoBehaviour {
         Vector3 p12 = (p1 + p2) / 2;
         Vector3 distance = position - p12;
         float angle = Vector3.Angle(ferriteRodAntenna, distance);
-        if(angle>90)
+        if (GameObject.Find("PJ80").GetComponent<PJ80>().getAntenna())
         {
-            angle = 180 - angle;
+            float l = GameObject.Find("PJ80").GetComponent<PJ80>().whipAntennaLength;
+            float angle3 = angle / 180 * (float)3.1415926;
+            signal.volume = Mathf.Abs(l+Mathf.Cos(angle3-(float)3.1415926/2));
         }
-        float angle2 = angle / 180 * (float)3.1415926;
-        float tan2 = Mathf.Tan(angle2) * Mathf.Tan(angle2);
-        signal.volume = Mathf.Sqrt(tan2 * tan2 + tan2) / (1 + tan2) * (float)0.9 + (float)0.1;
-
+        else
+        {
+            
+            if (angle > 90)
+            {
+                angle = 180 - angle;
+            }
+            float angle2 = angle / 180 * (float)3.1415926;
+            float tan2 = Mathf.Tan(angle2) * Mathf.Tan(angle2);
+            signal.volume = Mathf.Sqrt(tan2 * tan2 + tan2) / (1 + tan2) * (float)0.9 + (float)0.1;
+        }
         if (punchable == true)
         {
             Vector3 player = GameObject.Find("PJ80").transform.position;
@@ -102,7 +112,13 @@ public class Transmitter : MonoBehaviour {
     void DoMyWindow(int windowID)
     {
         if (GUI.Button(new Rect(70, 60, 100, 20), "Exit"))
-            Application.Quit();
+        {
+            #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+            #else
+	            Application.Quit ();
+            #endif
+        }
 
     }
 
