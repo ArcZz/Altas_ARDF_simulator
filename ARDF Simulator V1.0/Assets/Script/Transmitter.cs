@@ -7,47 +7,83 @@ public class Transmitter : MonoBehaviour {
     [Tooltip("The signal of the transmitter.(10:MO,>=11:dummy transmitter)")]
     public int transmitterID = 12;
 
-    public Texture2D mouse;
-    public Texture2D fingerStick;
-
-    public float punchDistance = 10;
-
-    public AudioSource punch;
-
     // Use this for initialization
     private Vector3 position;
     private AudioSource signal;
+    public int effect = 42;
+    public AudioClip[] code;
 
-    private bool punchable;
-    private bool test=false;
+    private float power;
 
-    private Rect windowRect = new Rect(200, 120, 240, 100);
-
+    private float test;
 
 
-    //private float test, test2;
+    float f = 0;
+    float f2 = 0;
+    float sv = 0;
+    //float Hz;
+    float volume;
+
+    void OnAudioFilterRead(float[] data, int channels)
+    {
+        for (int i = 0; i < data.Length; i++)
+        {
+            //data[i] = Mathf.Sin(f);
+            if (data[i] != 0)
+            { data[i] = Mathf.Sin(f)*volume; }
+            //if (i % (int)sv == 0)
+            /*
+            if (i % sv <1)
+            {
+                f++;
+            }
+            */
+            if (i % (int)(Mathf.Pow(power, sv)) == 0)
+            {
+                f += (float)1.5;
+            }
+        }
+    }
     void Start () {
         signal = GetComponent<AudioSource>();
+        signal.clip = code[transmitterID];
+        signal.Play();
+        
         position = this.transform.position;
-        punchable = false;
+        InvokeRepeating("Run", 0, 1);
+        power = (float)Mathf.Pow((float)400, (float)1 / effect);
+        Debug.Log(power);
     }
-	
-	// Update is called once per frame
-	void Update () {
-        //signal.volume = 1;
+
+    void Run()
+    {
+        //Hz = f - f2;
+        f2 = f;
+    }
+
+    // Update is called once per frame
+    void Update () {
+        signal.volume = 1;
         //GameObject.Find("PJ80").GetComponent<PJ80>().getAntenna();
         Vector3 p1 = GameObject.Find("P1").GetComponent<MeshFilter>().transform.position;
         Vector3 p2 = GameObject.Find("P2").GetComponent<MeshFilter>().transform.position;
+        Vector3 p3 = GameObject.Find("P3").GetComponent<MeshFilter>().transform.position;
         //Vector3 ferriteRodAntenna= GameObject.Find("P1").GetComponent<MeshFilter>().transform.position- GameObject.Find("P2").GetComponent<MeshFilter>().transform.position;
         Vector3 ferriteRodAntenna = p1 - p2;
         Vector3 p12 = (p1 + p2) / 2;
         Vector3 distance = position - p12;
         float angle = Vector3.Angle(ferriteRodAntenna, distance);
+        float volKnob = GameObject.Find("PJ80").GetComponent<PJ80>().getVolKnob() / (float)255;
+        int freqKnob = GameObject.Find("PJ80").GetComponent<PJ80>().getFreqKnob();
+        //test = volKnob;
         if (GameObject.Find("PJ80").GetComponent<PJ80>().getAntenna())
         {
+            Vector3 ch = p3 - p12;
             float l = GameObject.Find("PJ80").GetComponent<PJ80>().whipAntennaLength;
-            float angle3 = angle / 180 * (float)3.1415926;
-            signal.volume = Mathf.Abs(l+Mathf.Cos(angle3-(float)3.1415926/2));
+            float angle3 = Vector3.Angle(ch, distance) / 180 * (float)3.1415926;
+            //test4 = angle3;
+            //signal.volume = Mathf.Abs(l+Mathf.Cos(angle3))/(l+1);
+            volume = Mathf.Abs(l + Mathf.Cos(angle3)) / (l + 1);
         }
         else
         {
@@ -58,73 +94,35 @@ public class Transmitter : MonoBehaviour {
             }
             float angle2 = angle / 180 * (float)3.1415926;
             float tan2 = Mathf.Tan(angle2) * Mathf.Tan(angle2);
-            signal.volume = Mathf.Sqrt(tan2 * tan2 + tan2) / (1 + tan2) * (float)0.9 + (float)0.1;
+            //signal.volume = Mathf.Sqrt(tan2 * tan2 + tan2) / (1 + tan2) * (float)0.9 + (float)0.1;
+            volume = Mathf.Sqrt(tan2 * tan2 + tan2) / (1 + tan2) * (float)0.9 + (float)0.1;
         }
-        if (punchable == true)
+        //signal.volume = signal.volume * volKnob;
+        
+        int freqKnobDiff = effect/2 - Mathf.Abs(freqKnob - (transmitterID * 21 + 21));
+        if(freqKnobDiff<0)
         {
-            Vector3 player = GameObject.Find("PJ80").transform.position;
-            if (Vector3.Distance(player, position) > punchDistance)
-            {
-                Cursor.SetCursor(mouse, Vector2.zero, CursorMode.Auto);
-                punchable = false;
-            }
+            freqKnobDiff = 0;
+            sv = 0;
         }
+        else
+        {
+            sv = freqKnob - (transmitterID * 21 + 21) + effect/2;
+        }
+        float freqVol = (float)(Mathf.Sqrt(((float)freqKnobDiff / ((float)effect / 2))));
+        //freqVol = 1;
+        volume = volume * volKnob* freqVol;
+        test = freqVol;
 
         //test = signal.volume;
         //test2 = angle;
     }
 
-    /*
-    void OnGUI()
-    {
-        GUI.Label(new Rect(40, 20, 480, 30), "v: " + test+"ang:"+test2);
-    }
-    */
+    
+    
+    
 
-    private void OnMouseEnter()
-    {
-        Vector3 player = GameObject.Find("PJ80").transform.position;
-        if(Vector3.Distance(player,position)<punchDistance)
-        {
-            Cursor.SetCursor(fingerStick, Vector2.zero, CursorMode.Auto);
-            punchable = true;
-        }
-    }
+    
 
-    private void OnMouseExit()
-    {
-        if(punchable==true)
-        {
-            Cursor.SetCursor(mouse, Vector2.zero, CursorMode.Auto);
-            punchable = false;
-        }
-    }
-
-    private void OnMouseUp()
-    {
-        if(punchable==true)
-        {
-            punch.Play();
-            test = true;
-        }
-    }
-
-    void DoMyWindow(int windowID)
-    {
-        if (GUI.Button(new Rect(70, 60, 100, 20), "Exit"))
-        {
-            #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-            #else
-	            Application.Quit ();
-            #endif
-        }
-
-    }
-
-    private void OnGUI()
-    {
-        if(test)
-            windowRect = GUI.Window(0, windowRect, DoMyWindow, "Congratulation!");
-    }
+    
 }

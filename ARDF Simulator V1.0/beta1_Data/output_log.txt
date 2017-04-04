@@ -19,26 +19,38 @@ Platform assembly: C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simul
 Loading C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simulator V1.0\beta1_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simulator V1.0\beta1_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
 Loading C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simulator V1.0\beta1_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-- Completed reload, in  0.032 seconds
+- Completed reload, in  0.038 seconds
 Platform assembly: C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simulator V1.0\beta1_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\gcycaas\Desktop\ardf\Altas_ARDF_simulator\ARDF Simulator V1.0\beta1_Data\Managed\System.dll (this message is harmless)
 <RI> Initializing input.
 <RI> Input initialized.
 desktop: 1366x768 60Hz; virtual: 2646x1458 at -1280,-690
 <RI> Initialized touch support.
-UnloadTime: 1.233726 ms
+UnloadTime: 1.320964 ms
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 1640 -> priority: 1 
-  Thread -> id: 1234 -> priority: 1 
-Joystick connected ("BETOP CONTROLLER         ").
+  Thread -> id: 1ab8 -> priority: 1 
+  Thread -> id: 36c -> priority: 1 
+The referenced script on this Behaviour is missing!
  
-(Filename:  Line: 1351)
+(Filename:  Line: 1526)
+
+The referenced script on this Behaviour (Game Object 'WaterBasicDaytime') is missing!
+ 
+(Filename:  Line: 1754)
+
+The referenced script on this Behaviour (Game Object 'Canvas') is missing!
+ 
+(Filename:  Line: 1754)
 
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 5.706361 ms
+UnloadTime: 5.500240 ms
 
-Unloading 33 unused Assets to reduce memory usage. Loaded Objects now: 700.
-Total: 0.802243 ms (FindLiveObjects: 0.032072 ms CreateObjectMapping: 0.025658 ms MarkObjects: 0.221514 ms  DeleteObjects: 0.522569 ms)
+Unloading 33 unused Assets to reduce memory usage. Loaded Objects now: 1140.
+Total: 0.945500 ms (FindLiveObjects: 0.089803 ms CreateObjectMapping: 0.031217 ms MarkObjects: 0.280528 ms  DeleteObjects: 0.543096 ms)
+
+1.153331
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 FormatException: Input string was not in the correct format
   at System.Int32.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] in <filename unknown>:0 

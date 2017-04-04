@@ -11,7 +11,7 @@ public class PJ80 : MonoBehaviour {
     private int volKnob;
     private int freqKnob;
     private Animator anmi;
-    public float whipAntennaLength=1;
+    public float whipAntennaLength=2;
 
     void Start () {
         //string test = ReadWrite.get();
@@ -229,12 +229,12 @@ public class PJ80 : MonoBehaviour {
         return antenna;
     }
 
-    int getFreqKnob()
+    public int getFreqKnob()
     {
         return freqKnob;
     }
 
-    int getVolKnob()
+    public int getVolKnob()
     {
         return volKnob;
     }
