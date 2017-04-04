@@ -98,6 +98,8 @@ public class Puncher : MonoBehaviour {
             StartCoroutine(li());
             //test = true;
             GameObject.Find("punchRecord").GetComponent<punchRecord>().punch(puncherID);
+
+
         }
     }
 
