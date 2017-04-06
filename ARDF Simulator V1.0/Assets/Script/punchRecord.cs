@@ -40,7 +40,8 @@ public class punchRecord : MonoBehaviour {
         }
         if (puncherID==-4)
         {
-            test = true;
+            GameObject.Find("mainControl").GetComponent<main>().finish();
+            //test = true;
         }
     }
 
@@ -79,7 +80,7 @@ public class punchRecord : MonoBehaviour {
         }
         if(isStart==false || isFinish==false)
         {
-            output = "Tiem Error!";
+            output = "Time Error!";
         }
         else
         {
@@ -119,4 +120,13 @@ public class punchRecord : MonoBehaviour {
         }
 
     }
+    public List<int> getIDRecord()
+    {
+        return IDRecord;
+    }
+    public List<DateTime> getTimeRecord()
+    {
+        return timeRecord;
+    }
+    
 }

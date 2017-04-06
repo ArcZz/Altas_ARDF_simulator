@@ -98,7 +98,14 @@ public class Puncher : MonoBehaviour {
             StartCoroutine(li());
             //test = true;
             GameObject.Find("punchRecord").GetComponent<punchRecord>().punch(puncherID);
-
+            if (puncherID <= 9 && puncherID >= 0)
+            {
+                GameObject.Find("card").GetComponent<recordCard>().check(puncherID);
+            }
+            if(puncherID==-1)
+            {
+                //GameObject.Find("timingPrompter").GetComponent<AudioSource>().Play(100000);
+            }
 
         }
     }

@@ -56,6 +56,10 @@ public class PJ80 : MonoBehaviour {
         double pitch = r_pitch / 100;
         double yaw = r_yaw / 100;
          */
+        if(ReadWrite.mes.Contains("error"))
+        {
+            return;
+        }
 
         int r_q0 = Int32.Parse(ReadWrite.mes.Substring(20, 4), System.Globalization.NumberStyles.HexNumber);
         int r_q1 = Int32.Parse(ReadWrite.mes.Substring(24, 4), System.Globalization.NumberStyles.HexNumber);

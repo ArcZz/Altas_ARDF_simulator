@@ -52,7 +52,7 @@ public class Transmitter : MonoBehaviour {
         position = this.transform.position;
         InvokeRepeating("Run", 0, 1);
         power = (float)Mathf.Pow((float)400, (float)1 / effect);
-        Debug.Log(power);
+        //Debug.Log(power);
     }
 
     void Run()
