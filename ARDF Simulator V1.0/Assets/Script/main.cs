@@ -10,6 +10,7 @@ public class main : MonoBehaviour {
     bool window2 = false;
     bool window3 = false;
     bool shortDistance = true;
+    bool cycleControl = false;
     String output;
     int[] goal;
     int goalNum = 5;
@@ -23,7 +24,8 @@ public class main : MonoBehaviour {
         goal[2] = 3;
         goal[3] = 4;
         goal[4] = 5;
-        setGoal(6, 7, 8);
+        setGoal(1, 2, 3,4,5);
+        setShortDistance(false);//for test
     }
 	
 	// Update is called once per frame
@@ -59,7 +61,7 @@ public class main : MonoBehaviour {
         if (window2)
         {
             Rect windowRect = new Rect(Screen.width / 4, Screen.height / 3, Screen.width / 2, Screen.height / 3);
-            windowRect = GUI.Window(0, windowRect, DoMyWindow2, "Caution\n\n\n\nMake sure to find the correct transmitter, \nyou can review this card anytime by press the marker flag button on the left.");
+            windowRect = GUI.Window(0, windowRect, DoMyWindow2, "Reminder\n\n\n\nMake sure to find the correct transmitter, \nyou can review this card anytime by press the marker flag button on the left.\nPress the HELP button for more information.");
 
         }
         if (window3)
@@ -95,6 +97,7 @@ public class main : MonoBehaviour {
             if(!shortDistance)
             {
                 GameObject.Find("comp1").GetComponent<compass>().rend(false);
+                GameObject.Find("map").GetComponent<mapControl>().rend(false);
             }
         }
 
@@ -133,6 +136,7 @@ public class main : MonoBehaviour {
         yield return new WaitForSeconds(delay);
         GameObject.Find("startLineRestrict1").GetComponent<BoxCollider>().enabled = false;
         GameObject.Find("startLineRestrict2").GetComponent<BoxCollider>().enabled = false;
+        turnOn();
     }
 
     public bool setGoal(int g1)
@@ -203,6 +207,7 @@ public class main : MonoBehaviour {
 
     public void finish()
     {
+        turnOff();
         List<int> IDRecord = GameObject.Find("punchRecord").GetComponent<punchRecord>().getIDRecord();
         List<DateTime> timeRecord = GameObject.Find("punchRecord").GetComponent<punchRecord>().getTimeRecord();
         int l = IDRecord.Count;
@@ -254,5 +259,115 @@ public class main : MonoBehaviour {
         }
         window3 = true;
         return;
+    }
+
+    void turnOn()
+    {
+        if(shortDistance)
+        {
+            //SendMessage("switchPowerOn", true);
+            int i;
+            for (i = 0; i <= 9; i++)
+            {
+                String t = "transmitter" + i;
+                if (GameObject.Find(t) != null)
+                {
+                    GameObject.Find(t).GetComponent<Transmitter>().setShortDistance(true);
+                    GameObject.Find(t).GetComponent<Transmitter>().switchPowerOn(true);
+                }
+            }
+            if (GameObject.Find("transmitterMO") != null)
+            {
+                GameObject.Find("transmitterMO").GetComponent<Transmitter>().setShortDistance(true);
+                GameObject.Find("transmitterMO").GetComponent<Transmitter>().switchPowerOn(true);
+            }
+            else
+            {
+                Debug.Log("no MO!");
+            }
+
+        }
+        else
+        {
+            int i;
+            for (i = 1; i <= 5; i++)
+            {
+                String t = "transmitter" + i;
+                if (GameObject.Find(t) != null)
+                {
+                    GameObject.Find(t).GetComponent<Transmitter>().setShortDistance(false);
+                }
+            }
+            if (GameObject.Find("transmitterMO") != null)
+            {
+                GameObject.Find("transmitterMO").GetComponent<Transmitter>().setShortDistance(false);
+                GameObject.Find("transmitterMO").GetComponent<Transmitter>().switchPowerOn(true);
+            }
+            cycleControl = true;
+            StartCoroutine(cycle());
+        }
+    }
+
+    void turnOff()
+    {
+        if (shortDistance)
+        {
+            int i;
+            for (i = 0; i <= 9; i++)
+            {
+                String t = "transmitter" + i;
+                if (GameObject.Find(t) != null)
+                {
+                    GameObject.Find(t).GetComponent<Transmitter>().switchPowerOn(false);
+                }
+            }
+            if (GameObject.Find("transmitterMO") != null)
+            {
+                GameObject.Find("transmitterMO").GetComponent<Transmitter>().switchPowerOn(false);
+            }
+
+        }
+        else
+        {
+            cycleControl = false;
+            int i;
+            for (i = 1; i <= 5; i++)
+            {
+                String t = "transmitter" + i;
+                if (GameObject.Find(t) != null)
+                {
+                    GameObject.Find(t).GetComponent<Transmitter>().switchPowerOn(false);
+                }
+            }
+            if (GameObject.Find("transmitterMO") != null)
+            {
+                GameObject.Find("transmitterMO").GetComponent<Transmitter>().switchPowerOn(false);
+            }
+        }
+    }
+
+    IEnumerator cycle()
+    {
+
+        
+        int i;
+        for (i = 0;cycleControl ; i=(i+1)%5)
+        {
+            String t = "transmitter" + (i+1);
+            if (GameObject.Find(t) != null)
+            {
+                GameObject.Find(t).GetComponent<Transmitter>().switchPowerOn(true);
+                yield return new WaitForSeconds(60f);
+                GameObject.Find(t).GetComponent<Transmitter>().switchPowerOn(false);
+            }
+            else
+            {
+                Debug.Log(t + " missing!");
+            }
+        }
+    }
+    public bool getShortDistance()
+    {
+        return shortDistance;
     }
 }

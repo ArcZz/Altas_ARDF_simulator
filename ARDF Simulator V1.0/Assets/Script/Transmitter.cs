@@ -12,6 +12,8 @@ public class Transmitter : MonoBehaviour {
     private AudioSource signal;
     public int effect = 42;
     public AudioClip[] code;
+    private bool shortDistance = true;
+    private bool switchOn = false;
 
     private float power;
 
@@ -26,6 +28,7 @@ public class Transmitter : MonoBehaviour {
 
     void OnAudioFilterRead(float[] data, int channels)
     {
+        f = 0;
         for (int i = 0; i < data.Length; i++)
         {
             //data[i] = Mathf.Sin(f);
@@ -63,7 +66,14 @@ public class Transmitter : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        signal.volume = 1;
+        if (switchOn)
+        {
+            signal.volume = 1;
+        }
+        else
+        {
+            signal.volume = 0;
+        }
         //GameObject.Find("PJ80").GetComponent<PJ80>().getAntenna();
         Vector3 p1 = GameObject.Find("P1").GetComponent<MeshFilter>().transform.position;
         Vector3 p2 = GameObject.Find("P2").GetComponent<MeshFilter>().transform.position;
@@ -98,8 +108,15 @@ public class Transmitter : MonoBehaviour {
             volume = Mathf.Sqrt(tan2 * tan2 + tan2) / (1 + tan2) * (float)0.9 + (float)0.1;
         }
         //signal.volume = signal.volume * volKnob;
-        
-        int freqKnobDiff = effect/2 - Mathf.Abs(freqKnob - (transmitterID * 21 + 21));
+        int freqKnobDiff;
+        if (shortDistance || (transmitterID == 10))
+        {
+            freqKnobDiff = effect / 2 - Mathf.Abs(freqKnob - (transmitterID * 21 + 21));
+        }
+        else
+        {
+            freqKnobDiff = effect / 2 - Mathf.Abs(freqKnob - (5 * 21 + 21));
+        }
         if(freqKnobDiff<0)
         {
             freqKnobDiff = 0;
@@ -107,7 +124,15 @@ public class Transmitter : MonoBehaviour {
         }
         else
         {
-            sv = freqKnob - (transmitterID * 21 + 21) + effect/2;
+            if (shortDistance || (transmitterID==10))
+            {
+                sv = -freqKnob + (transmitterID * 21 + 21) + effect / 2;
+            }
+            else
+            {
+                sv = -freqKnob + (5 * 21 + 21) + effect / 2;
+            }
+            
         }
         float freqVol = (float)(Mathf.Sqrt(((float)freqKnobDiff / ((float)effect / 2))));
         //freqVol = 1;
@@ -119,9 +144,15 @@ public class Transmitter : MonoBehaviour {
     }
 
     
-    
-    
+    public void switchPowerOn(bool sw)
+    {
+        switchOn = sw;
+    }
 
+    public void setShortDistance(bool sd)
+    {
+        shortDistance = sd;
+    }
     
 
     
