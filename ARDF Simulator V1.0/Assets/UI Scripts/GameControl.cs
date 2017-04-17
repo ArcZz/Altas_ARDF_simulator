@@ -15,6 +15,7 @@ public class GameControl : MonoBehaviour {
 	public bool shortm;
 	public bool langth;
 	public bool RND;
+
 	void Awake () {
 		if (control == null) {
 			DontDestroyOnLoad (gameObject);
@@ -31,17 +32,21 @@ public class GameControl : MonoBehaviour {
 		FileStream file = File.Open (Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
 		Debug.Log (Application.persistentDataPath);
 		PlayerData player = new PlayerData ();
-		player.b = b;
-		player.a = a;
-		player.check = check;
+		player.numT = numT;
+		player.goalID = goalID;
 		player.ip = ip;
 		player.name = name;
+		player.online = online;
+		player.shortm = shortm;
+		player.langth = langth;
+		player.RND = RND;
+	
 		bf.Serialize (file, player);
 		file.Close ();
 
 	}
 	public void Load(){
-		if (File.Exists (Application.persistentDataPath, "/playernfo.dat")) {
+		if (File.Exists (Application.persistentDataPath + "/playerInfo.dat")) {
 			BinaryFormatter bf = new BinaryFormatter ();
 			FileStream file = File.Open (Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
 			PlayerData player = (PlayerData)bf.Deserialize(file);
@@ -74,11 +79,14 @@ public class GameControl : MonoBehaviour {
 	[System.Serializable]
 	public class PlayerData
 	{
-		public int b;
-		public int a;
+		public int numT;
+		public int[] goalID;
 		public string ip;
 		public string name;
-		public bool check;
+		public bool online;
+		public bool shortm;
+		public bool langth;
+		public bool RND;
 		public PlayerData (){
 
 

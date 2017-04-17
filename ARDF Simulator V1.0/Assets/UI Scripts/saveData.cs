@@ -7,7 +7,7 @@ public class saveData : MonoBehaviour {
 
 	public Text ip;
 	public Text name;
-	public Toggle check;
+	//public Toggle check;
 	//public boolean check;
 
 	public void save(){
@@ -15,9 +15,9 @@ public class saveData : MonoBehaviour {
 
 		GameControl.control.ip = ip.text;
 		GameControl.control.name = name.text;
-		GameControl.control.check = check.isOn;
+		//GameControl.control.check = check.isOn;
 
-		Debug.Log (GameControl.control.check);
+		//Debug.Log (GameControl.control.check);
 		GameControl.control.Save ();
 	}
 
