@@ -7,20 +7,22 @@ public class saveData : MonoBehaviour {
 
 	public Text ip;
 	public Text name;
-	//public Toggle check;
-	//public boolean check;
+	public Toggle online;
+
 
 	public void save(){
 		
-
+		if (ip.text != ""){
 		GameControl.control.ip = ip.text;
 		GameControl.control.name = name.text;
-		//GameControl.control.check = check.isOn;
+		GameControl.control.online = online.isOn;
 
-		//Debug.Log (GameControl.control.check);
-		GameControl.control.Save ();
+		Debug.Log (GameControl.control.ip);
+
+		
+		}
+
+
+
 	}
-
-
-
 }

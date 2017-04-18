@@ -3,19 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary; 
 using System.IO;
+using UnityEngine.UI;
 
 public class GameControl : MonoBehaviour {
 
 	public static GameControl control;
-	public int numT;
-	public int[] goalID;
+	//settings
 	public string ip;
 	public string name;
 	public bool online;
-	public bool shortm;
-	public bool langth;
-	public bool RND;
 
+	//controller
+	public float y;
+
+	//model //length //Sound type
+	public int numM;
+	public int length;
+	public int sounds;
+
+	//Ul display
+	public Text iptext;
+	public Text nametext;
+	public Toggle onlinetext;
+
+
+	//public  int[] a; public void InitArray(int n) { a = new int[n]; }
 	void Awake () {
 		if (control == null) {
 			DontDestroyOnLoad (gameObject);
@@ -26,20 +38,33 @@ public class GameControl : MonoBehaviour {
 		}
 
 	}
+	void Start(){
+		Load ();
+
+		iptext.text = GameControl.control.ip;
+		nametext.text = GameControl.control.name;
+		onlinetext.isOn = GameControl.control.online;
+
+
+	
+
+
+
+	}
 	public void Save(){
-		BinaryFormatter bf = new BinaryFormatter ();
-		CreateFile(Application.persistentDataPath +"/","playernfo.dat");    
-		FileStream file = File.Open (Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+		BinaryFormatter bf = new BinaryFormatter ();  
+		FileStream file = File.Create (Application.persistentDataPath + "/playerInfo.dat");
 		Debug.Log (Application.persistentDataPath);
 		PlayerData player = new PlayerData ();
-		player.numT = numT;
-		player.goalID = goalID;
+
 		player.ip = ip;
 		player.name = name;
 		player.online = online;
-		player.shortm = shortm;
-		player.langth = langth;
-		player.RND = RND;
+		player.y = y;
+
+		player.numM = numM;
+		player.length = length;
+		player.sounds = sounds;
 	
 		bf.Serialize (file, player);
 		file.Close ();
@@ -50,44 +75,44 @@ public class GameControl : MonoBehaviour {
 			BinaryFormatter bf = new BinaryFormatter ();
 			FileStream file = File.Open (Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
 			PlayerData player = (PlayerData)bf.Deserialize(file);
-			file.Close ();
+
+			ip = player.ip;
+			name = player.name;
+			online = player.online;
+
+			y = player.y;
+
+			numM = player.numM;
+			length = player.length;
+			sounds = player.sounds;
+
+
 
 		} else {
 			
 		}
 	}
-	void CreateFile(string path,string name)    
-	{    
-		 
-		StreamWriter sw;    
-		FileInfo t = new FileInfo(path+"//"+ name);    
-		if(!t.Exists)    
-		{    
-			
-			sw = t.CreateText();   
-		}    
-		else  
-		{    
-			
-			sw = t.AppendText();    
-		}    
-			
-		sw.Close();    
-		sw.Dispose();    
-	}    
+	    
 
 	[System.Serializable]
 	public class PlayerData
 	{
-		public int numT;
-		public int[] goalID;
+		//settings
 		public string ip;
 		public string name;
 		public bool online;
-		public bool shortm;
-		public bool langth;
-		public bool RND;
+
+		//controller
+		public float y;
+
+		//model //length //Sound type
+		public int numM;
+		public int length;
+		public int sounds;
+
+
 		public PlayerData (){
+			
 
 
 		}

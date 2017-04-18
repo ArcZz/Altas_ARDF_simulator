@@ -13,6 +13,7 @@ public class SliderValue : MonoBehaviour {
 	{
 
 		Debug.Log(mainSlider.value);
+		GameControl.control.Save();
 	}
 }
 
