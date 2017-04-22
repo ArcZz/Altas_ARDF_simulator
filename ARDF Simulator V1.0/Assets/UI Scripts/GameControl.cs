@@ -8,22 +8,31 @@ using UnityEngine.UI;
 public class GameControl : MonoBehaviour {
 
 	public static GameControl control;
-	//settings
+	//settings and save 
+
 	public string ip;
 	public string name;
+	public string cmo;
+	public float y;
 	public bool online;
 
-	//controller
-	public float y;
 
-	//model //length //Sound type
+	//model //length //Sound type for transfer data
 	public int numM;
 	public int length;
 	public int sounds;
+	public int num1;
+	public int num2;
+	public int num3;
+	public int num4;
+	public int num5;
+
 
 	//Ul display
+	public Slider myY;
 	public Text iptext;
 	public Text nametext;
+	public Text cmotext;
 	public Toggle onlinetext;
 
 
@@ -44,8 +53,8 @@ public class GameControl : MonoBehaviour {
 		iptext.text = GameControl.control.ip;
 		nametext.text = GameControl.control.name;
 		onlinetext.isOn = GameControl.control.online;
-
-
+		myY.value = GameControl.control.y;
+		cmotext.text = GameControl.control.cmo;
 	
 
 
@@ -61,10 +70,8 @@ public class GameControl : MonoBehaviour {
 		player.name = name;
 		player.online = online;
 		player.y = y;
+		player.cmo = cmo;
 
-		player.numM = numM;
-		player.length = length;
-		player.sounds = sounds;
 	
 		bf.Serialize (file, player);
 		file.Close ();
@@ -79,12 +86,10 @@ public class GameControl : MonoBehaviour {
 			ip = player.ip;
 			name = player.name;
 			online = player.online;
-
+			cmo = player.cmo;
 			y = player.y;
 
-			numM = player.numM;
-			length = player.length;
-			sounds = player.sounds;
+		
 
 
 
@@ -101,14 +106,20 @@ public class GameControl : MonoBehaviour {
 		public string ip;
 		public string name;
 		public bool online;
-
-		//controller
+		public string cmo;
 		public float y;
 
 		//model //length //Sound type
 		public int numM;
+		public int num1;
+		public int num2;
+		public int num3;
+		public int num4;
+		public int num5;
+
 		public int length;
 		public int sounds;
+
 
 
 		public PlayerData (){
