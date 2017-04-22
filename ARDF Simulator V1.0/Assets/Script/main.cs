@@ -25,7 +25,7 @@ public class main : MonoBehaviour {
         goal[3] = 4;
         goal[4] = 5;
         setGoal(1, 2, 3,4,5);
-        setShortDistance(false);//for test
+        setShortDistance(true);//for test
     }
 	
 	// Update is called once per frame
