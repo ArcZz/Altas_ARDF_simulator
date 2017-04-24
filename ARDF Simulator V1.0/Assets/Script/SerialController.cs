@@ -65,6 +65,7 @@ public class SerialController : MonoBehaviour
     void OnEnable()
     {
         portName = "COM"+GameObject.Find("GameControl").GetComponent<GameControl>().cmo;
+        //Debug.Log("JAJAJ" + portName);
         serialThread = new SerialThread(portName, baudRate, reconnectionDelay,
                                         maxUnreadMessages);
         thread = new Thread(new ThreadStart(serialThread.RunForever));

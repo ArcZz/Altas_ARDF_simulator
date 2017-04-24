@@ -42,16 +42,17 @@ public class GameControl : MonoBehaviour {
 		if (control == null) {
 			DontDestroyOnLoad (gameObject);
 			control = this;
-		}
+            Load();
+
+            Init();
+        }
 		else if (control != this){
 			Destroy (gameObject);
 		}
 
 	}
 	void Start(){
-		Load ();
-
-        Init();
+		
 	
 
 
