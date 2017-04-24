@@ -33,14 +33,20 @@ public class TransferData : MonoBehaviour {
 			GameControl.control.num4 = num4.value;
 			GameControl.control.num5 = num5.value;						
 			Debug.Log (dropdown.value);
+        /*
 		Debug.Log ("1 shows" + GameControl.control.num1);
 		Debug.Log ("2 shows" + GameControl.control.num2);
 		Debug.Log ("3 shows" + GameControl.control.num3);
 		Debug.Log ("4 shows" + GameControl.control.num4);
 		Debug.Log ("5 shows" + GameControl.control.num5);
+        */
 
 			
 	}
+    public void setOnline(bool online)
+    {
+        GameControl.control.onlineTraining = online;
+    }
 	public void change(){
 
 		Debug.Log (sounds.value); 

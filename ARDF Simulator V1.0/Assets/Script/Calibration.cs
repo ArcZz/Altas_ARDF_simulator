@@ -1,16 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Calibration : MonoBehaviour {
 
+    Slider sl;
+
 	// Use this for initialization
 	void Start () {
-        this.transform.localRotation = Quaternion.Euler(90, 0, 35);
+        sl = GameObject.Find("GameControl").GetComponent<GameControl>().myY;
+        float cal = GameObject.Find("GameControl").GetComponent<GameControl>().y;
+        this.transform.localRotation = Quaternion.Euler(90, 0, cal);
+        
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        this.transform.localRotation = Quaternion.Euler(90, 0, sl.value);
+    }
 }

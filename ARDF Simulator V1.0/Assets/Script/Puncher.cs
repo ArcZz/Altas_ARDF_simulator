@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Puncher : MonoBehaviour {
 
@@ -106,7 +107,7 @@ public class Puncher : MonoBehaviour {
             {
                 //GameObject.Find("timingPrompter").GetComponent<AudioSource>().Play(100000);
             }
-
+            GameObject.Find("Online").GetComponent<OnlineSocket>().mSocket.SendMessage("Punch: "+puncherID+ "|"+DateTime.Now);
         }
     }
 

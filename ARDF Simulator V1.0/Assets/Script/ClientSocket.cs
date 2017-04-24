@@ -8,6 +8,15 @@ namespace Net
 {
 	public class ClientSocket
 	{
+        //standard distance: mode 1, short distance: mode 0
+        public static char mode='8';
+        public static int[] transmitterId = new int[5];
+        //public static char numoftransmitter;
+        //wave distance
+        public static char distance='D';
+        //number of transmitter
+        public static int transmitterNum=1;
+
 		private static byte[] result = new byte[1024];  
 		private static Socket clientSocket;  
 		//是否已连接的标识  
@@ -36,7 +45,7 @@ namespace Net
 			catch  
 			{  
 				IsConnected = false;  
-				Debug.Log("Connect server failed.");  
+				//Debug.Log("Connect server failed.");  
 				return;  
 			}  
 			//服务器下发数据长度 
@@ -48,9 +57,9 @@ namespace Net
 				if (data == "Waiting") {
 					Debug.Log ("Server returns data：" + data);
 					
-					GameObject.FindGameObjectWithTag ("FPSController").SetActive (false);
+					GameObject.Find ("FPSController").SetActive (false);
 				} else {
-					GameObject.FindGameObjectWithTag ("FPSController").SetActive (true);
+					GameObject.Find ("FPSController").SetActive (true);
 					Debug.Log ("Server returns data：" + data);
 				}
 				
@@ -60,22 +69,73 @@ namespace Net
 			//Debug.Log("we are entering now");
 			Socket mClientSocket = (Socket)clientSocket;
 			while (IsConnected) {
-				
-				int receiveNumber = mClientSocket.Receive (result);
+                //Debug.Log("we are service connect now");
+                int receiveNumber = mClientSocket.Receive (result);
 				//Console.WriteLine("接收客户端{0}消息， 长度为{1}", mClientSocket.RemoteEndPoint.ToString(), receiveNumber);
 				ByteBuffer buff = new ByteBuffer (result);
 				//数据长度  
 				int len = buff.ReadShort ();
 				//int protoId = buff.ReadShort();
+                
 				//数据内容  
 				string data = buff.ReadString ();
-				if (data == "You are stopped by Teacher") {
+                string basic_info = data;
+                Debug.Log("data receive"+data);
+                if (data.Contains("Basic information: ")) {
+                    basic_info = basic_info.Replace("Basic information: ", "");
+                    //string[] string_arr = basic_info.Split('/');
+                    mode = basic_info[0];
+                    if (mode == '2')
+                    {
+                        GameControl.control.length = 1;
+                    }
+                    else
+                    {
+                        GameControl.control.length = 0;
+                    }
+                    distance = basic_info[1];
+                    if (distance == 'D')
+                    {
+                        GameControl.control.numM = 1;
+                    }
+                    else
+                    {
+                        GameControl.control.numM = 0;
+                    }
+                    transmitterNum = (int)basic_info[2]-48;
+                    GameControl.control.sounds = transmitterNum - 1;
+                    //int leneg = transmitter.Length;
+                    //transmitterId[i]
+
+                    //numoftransmitter = transmitter[0];
+                    for (int i = 0; i< 5; i++)
+                    {
+                        if (basic_info[i + 3] != 'N')
+                        {
+                            transmitterId[i] = (int)basic_info[i + 3]-48;
+                            Debug.Log("transmitterId:" + transmitterId[i]);
+                        }
+                        else
+                        {
+                            transmitterId[i] = 0;
+                        }
+                        
+                        //Debug.Log("transmitterId:" + transmitterId[i]);
+                    }
+                    GameControl.control.num1 = transmitterId[0];
+                    GameControl.control.num2 = transmitterId[1];
+                    GameControl.control.num3 = transmitterId[2];
+                    GameControl.control.num4 = transmitterId[3];
+                    GameControl.control.num5 = transmitterId[4];
+
+                }
+                if (data == "You are stopped by Teacher") {
 					Debug.Log("we are entering now 4");
 					Debug.Log ("Please contact your teacher APSP：" + data);
 					IsConnected = false;
 				} else {
-					//GameObject.FindGameObjectWithTag ("player").SetActive (true);
-
+                    //GameObject.FindGameObjectWithTag ("player").SetActive (true);
+                    //Debug.Log("Reieved data" + data);
 				}
 			}
 		}
@@ -119,7 +179,47 @@ namespace Net
 				writer.Flush();  
 				return ms.ToArray();  
 			}  
-		}  
+		}
+        
+        public int getTrsNum()
+        {
+            return transmitterNum;
+        }  
+
+        public int getTrsID(int n)
+        {
+            if (n < 1 || n > 5)
+            {
+                return -2;
+            }
+            else
+            {
+                return transmitterId[n];
+            }
+        }
+
+        public bool getShort()
+        {
+            if(distance=='D')
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool get2m()
+        {
+            if(mode=='2')
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 	}
 }
 

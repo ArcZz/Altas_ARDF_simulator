@@ -1,24 +1,39 @@
-﻿using UnityEngine;  
-using System.Collections;  
-using Net;  
+﻿using UnityEngine;
+using System.Collections;
+using Net;
 using System.Threading;
+using System;
+
 public class OnlineSocket : MonoBehaviour {  
 
 	// Use this for initialization 
-	ClientSocket mSocket = new ClientSocket(); 
+	public ClientSocket mSocket = new ClientSocket(); 
 	//定义一个Transform类型的player  
 	private Transform player;
 
 	void Start () {
         player = GameObject.Find("FPSController").transform;
-        Debug.Log("0");
+        //Debug.Log("0");
         //mSocket.SendMessage("Player: " + player.tag);
 
 
-        Thread thread = new Thread(mSocket.receiveData);
-        thread.Start(mSocket);
-        mSocket.ConnectServer("10.7.8.84", 8088);
-        Debug.Log("1");
+       
+
+        bool cont = true;
+        if (GameControl.control.onlineTraining)
+        {
+            while (mSocket.IsConnected == false)
+            {
+                mSocket.ConnectServer(GameControl.control.ip, 8088);
+                //mSocket.ConnectServer("10.7.9.185", 8088);
+               
+
+            }
+            Thread thread = new Thread(mSocket.receiveData);
+            thread.Start(mSocket);
+            mSocket.SendMessage("NA"+ GameControl.control.name);
+        }
+        //Debug.Log("1");
         //player = GameObject.FindGameObjectWithTag("player").transform;
         
         //Debug.Log(player.position.x);
@@ -54,7 +69,7 @@ public class OnlineSocket : MonoBehaviour {
 		send = send + coordianteX + coordianteZ +"F";
 
 		//Debug.Log ("X = " + coordianteX + " & Z = " + coordianteZ);
-		Debug.Log("send = "+send);
+		//Debug.Log("send = "+send);
 		//mSocket.SendMessage("Player:sdfddfdsfjdsfjsdfasdfadsfdsfadsfsdfsdfsdfasdfsdfasdfasdfsdfasdfsdfsdfsdfasdfsfasdfadsfdsfsdfsdfdsfdsfdsfdsfgsdgksfwejjrklnnsmfjsdhflwknf2");
 		//mSocket.SendMessage("Player:sdfddfdsfjdsfjsdfasdfadsfdsfadsfsdfsdfsdfasdfsdfasdfasdfsdfasdfsdfsdfsdfasdfsfasdfadsfdsfsdfsdfdsfdsfdsfdsfgsdgksfwejjrklnnsmfjsdhflwknf3");
 		//mSocket.SendMessage (player.position.ToString("G4"));

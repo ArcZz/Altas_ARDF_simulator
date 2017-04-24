@@ -3,10 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Net;
 
 public class main : MonoBehaviour {
 
+
+    public Slider cals;
     bool window1 = false;
+    bool window1ol = false;
     bool window2 = false;
     bool window3 = false;
     bool shortDistance = true;
@@ -17,15 +21,35 @@ public class main : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Time.timeScale = 0;
-        window1 = true;
+        if (GameControl.control.onlineTraining)
+        {
+            window1ol = true;
+        }
+        else
+        {
+            window1 = true;
+        }
+        
         goal=new int[5];
-        goal[0] = 1;
-        goal[1] = 2;
-        goal[2] = 3;
-        goal[3] = 4;
-        goal[4] = 5;
-        setGoal(1, 2, 3,4,5);
-        setShortDistance(true);//for test
+        /*
+        goal[0] = GameControl.control.num1;
+        goal[1] = GameControl.control.num2;
+        goal[2] = GameControl.control.num3;
+        goal[3] = GameControl.control.num4;
+        goal[4] = GameControl.control.num5;
+        */
+        //Debug.Log("goal n:"+ goalNum);
+
+
+        setGoal(GameControl.control.num1, GameControl.control.num2, GameControl.control.num3, GameControl.control.num4, GameControl.control.num5);
+        goalNum = GameControl.control.sounds+1;
+        if(GameControl.control.numM==1)
+        { setShortDistance(true); }
+        else{ setShortDistance(false); }
+
+
+        GameControl.control.myY = cals;
+        GameControl.control.myY.value = GameControl.control.y;
     }
 	
 	// Update is called once per frame
@@ -58,6 +82,12 @@ public class main : MonoBehaviour {
             windowRect = GUI.Window(0, windowRect, DoMyWindow1, "Welcome!\n\n\n\nHello! Welcome to Altas™ ARDF Simulator!");
             
         }
+        if (window1ol)
+        {
+            Rect windowRect = new Rect(Screen.width / 4, Screen.height / 3, Screen.width / 2, Screen.height / 3);
+            windowRect = GUI.Window(0, windowRect, DoMyWindow1ol, "Welcome!\n\n\n\nHello! Welcome to Altas™ ARDF Simulator online mode!\nServer IP:"+ GameControl.control.ip);
+
+        }
         if (window2)
         {
             Rect windowRect = new Rect(Screen.width / 4, Screen.height / 3, Screen.width / 2, Screen.height / 3);
@@ -79,13 +109,6 @@ public class main : MonoBehaviour {
     {
         if (GUI.Button(new Rect(Screen.width*9/40, Screen.height/4, Screen.width / 20, Screen.height / 30), "Next"))
         {
-            /*
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-            Application.Quit();
-#endif
-*/
             int i;
             for(i=0;i<goalNum;i++)
             {
@@ -102,6 +125,39 @@ public class main : MonoBehaviour {
         }
 
     }
+
+    void DoMyWindow1ol(int windowID)
+    {
+        if (GUI.Button(new Rect(Screen.width * 9 / 40, Screen.height / 4, Screen.width / 20, Screen.height / 30), "Next"))
+        {
+            //Debug.Log("gc1:"+ GameControl.control.num1);
+            setGoal(GameControl.control.num1, GameControl.control.num2, GameControl.control.num3, GameControl.control.num4, GameControl.control.num5);
+            goalNum = GameControl.control.sounds + 1;
+            if (GameControl.control.numM == 1)
+            { setShortDistance(true); }
+            else { setShortDistance(false); }
+
+
+
+
+            int i;
+            for (i = 0; i < goalNum; i++)
+            {
+                GameObject.Find("card").GetComponent<recordCard>().edit(i + 1, goal[i]);
+                //Debug.Log("set"+ goal[i]);
+            }
+            GameObject.Find("card").GetComponent<recordCard>().show();
+            window1ol = false;
+            window2 = true;
+            if (!shortDistance)
+            {
+                GameObject.Find("comp1").GetComponent<compass>().rend(false);
+                GameObject.Find("map").GetComponent<mapControl>().rend(false);
+            }
+        }
+
+    }
+
     void DoMyWindow2(int windowID)
     {
         if (GUI.Button(new Rect(Screen.width * 9 / 40, Screen.height / 4, Screen.width / 20, Screen.height / 30), "Start!"))
@@ -255,6 +311,7 @@ public class main : MonoBehaviour {
             {
                 TimeSpan usage = finish.Subtract(start);
                 output += "\nTime usage:\t" + usage.ToString();
+                GameObject.Find("Online").GetComponent<OnlineSocket>().mSocket.SendMessage("Usage: " + usage);
             }
         }
         window3 = true;

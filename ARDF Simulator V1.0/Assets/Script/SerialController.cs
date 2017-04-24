@@ -27,7 +27,7 @@ using System.Threading;
 public class SerialController : MonoBehaviour
 {
     [Tooltip("Port name with which the SerialPort object will be created.")]
-    public string portName = "COM4";
+    string portName = "COM1";
 
     [Tooltip("Baud rate that the serial device is using to transmit data.")]
     public int baudRate = 9600;
@@ -64,6 +64,7 @@ public class SerialController : MonoBehaviour
     // ------------------------------------------------------------------------
     void OnEnable()
     {
+        portName = "COM"+GameObject.Find("GameControl").GetComponent<GameControl>().cmo;
         serialThread = new SerialThread(portName, baudRate, reconnectionDelay,
                                         maxUnreadMessages);
         thread = new Thread(new ThreadStart(serialThread.RunForever));

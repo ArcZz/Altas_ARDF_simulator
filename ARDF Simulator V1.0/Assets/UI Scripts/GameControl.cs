@@ -14,7 +14,7 @@ public class GameControl : MonoBehaviour {
 	public string name;
 	public string cmo;
 	public float y;
-	public bool online;
+	public bool online;//second screen
 
 
 	//model //length //Sound type for transfer data
@@ -26,6 +26,7 @@ public class GameControl : MonoBehaviour {
 	public int num3;
 	public int num4;
 	public int num5;
+    public bool onlineTraining=false;
 
 
 	//Ul display
@@ -33,7 +34,7 @@ public class GameControl : MonoBehaviour {
 	public Text iptext;
 	public Text nametext;
 	public Text cmotext;
-	public Toggle onlinetext;
+	public Toggle onlinetext;//second screen
 
 
 	//public  int[] a; public void InitArray(int n) { a = new int[n]; }
@@ -50,17 +51,29 @@ public class GameControl : MonoBehaviour {
 	void Start(){
 		Load ();
 
-		iptext.text = GameControl.control.ip;
-		nametext.text = GameControl.control.name;
-		onlinetext.isOn = GameControl.control.online;
-		myY.value = GameControl.control.y;
-		cmotext.text = GameControl.control.cmo;
+        Init();
 	
 
 
 
 	}
-	public void Save(){
+
+    public void Init()
+    {
+       
+       
+        iptext.text = GameControl.control.ip;
+        nametext.text = GameControl.control.name;
+        onlinetext.isOn = GameControl.control.online;
+        myY.value = GameControl.control.y;
+        cmotext.text = GameControl.control.cmo;
+    }
+  
+
+
+
+    public void Save(){
+        Debug.Log("test");
 		BinaryFormatter bf = new BinaryFormatter ();  
 		FileStream file = File.Create (Application.persistentDataPath + "/playerInfo.dat");
 		Debug.Log (Application.persistentDataPath);
