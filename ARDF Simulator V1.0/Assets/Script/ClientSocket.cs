@@ -40,7 +40,7 @@ namespace Net
 				clientSocket.Connect(ip_end_point); 
 				//clientSocket.Blocking = false;
 				IsConnected = true;  
-				Debug.Log("Connect server success.");  
+				//Debug.Log("Connect server success.");  
 			}  
 			catch  
 			{  
@@ -60,7 +60,7 @@ namespace Net
 					GameObject.Find ("FPSController").SetActive (false);
 				} else {
 					GameObject.Find ("FPSController").SetActive (true);
-					Debug.Log ("Server returns data：" + data);
+					//Debug.Log ("Server returns data：" + data);
 				}
 				
 
@@ -80,7 +80,7 @@ namespace Net
 				//数据内容  
 				string data = buff.ReadString ();
                 string basic_info = data;
-                Debug.Log("data receive"+data);
+                //Debug.Log("data receive"+data);
                 if (data.Contains("Basic information: ")) {
                     basic_info = basic_info.Replace("Basic information: ", "");
                     //string[] string_arr = basic_info.Split('/');
@@ -113,7 +113,7 @@ namespace Net
                         if (basic_info[i + 3] != 'N')
                         {
                             transmitterId[i] = (int)basic_info[i + 3]-48;
-                            Debug.Log("transmitterId:" + transmitterId[i]);
+                            //Debug.Log("transmitterId:" + transmitterId[i]);
                         }
                         else
                         {
